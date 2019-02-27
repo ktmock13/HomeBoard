@@ -66,3 +66,27 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+To use:
+
+Front-end
+- Typescript
+- React + context api
+- GraphQL
+
+Backend
+- express
+- mongodb
+
+Services/APIs
+- Mongodb atlas (make local if possible)
+- Google Calendar?
+- Setup an api that scrapes personal cap?
+
+Hardware
+- RPi 3B+
+- LAN Port forward
+
+Reporting
+- csv <-> json, Papa-Parse
