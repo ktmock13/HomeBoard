@@ -1,26 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider, Query } from 'react-apollo'
+import gql from 'graphql-tag'
 import './App.css';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+})
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Query
+            query={gql`
+              {finEvents {
+    id
+    desc
+    datetime
+    amount
+  }}
+            `}
           >
-            Learn React
-          </a>
-        </header>
-      </div>
+            {({ loading, error, data }) => {
+              if (loading) return <p>Good things take time....</p>
+              if (error) return <p>Something went wrong...</p>
+              return (
+                <div className="row">
+                  {
+                    data.finEvents.map(finEvent => {
+                      return <p> {JSON.stringify(finEvent)} </p>;
+                    })
+                  }
+                </div>
+              );
+
+            }
+            }
+          </Query>
+
+        </div>
+      </ApolloProvider>
     );
   }
 }
