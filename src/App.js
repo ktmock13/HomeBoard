@@ -16,11 +16,11 @@ class App extends Component {
           <Query
             query={gql`
               {finEvents {
-    id
-    desc
-    datetime
-    amount
-  }}
+                id
+                desc
+                datetime
+                amount
+              }}
             `}
           >
             {({ loading, error, data }) => {
