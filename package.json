@@ -30,10 +30,8 @@
     "react-scripts": "2.1.5"
   },
   "scripts": {
-    "start": "npm-run-all --parallel start:web",
-    "start:web": "react-scripts start",
-    "start:json": "nodemon --exec babel-node src/jsonServer.js",
-    "start:server": "nodemon --exec babel-node server/server.js",
+    "start": "react-scripts start",
+    "server": "nodemon --exec babel-node src/jsonServer.js",
     "build": "react-scripts build",
     "convert": "node utils/convert/csv_to_json.js",
     "test": "react-scripts test",
