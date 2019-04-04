@@ -1,5 +1,352 @@
 {
-    "cashflow": [
-        { "datetime": 1, "title": "json-server", "author": "typicode" }
-    ]
+  "finEvents": [
+    {
+      "date": "January 11, 2019",
+      "amount": "$2263.87",
+      "desc": "Paycheck",
+      "balance": "$2263.87"
+    },
+    {
+      "date": "January 15, 2019",
+      "amount": "-$105.00",
+      "desc": "PGE/Haircut/Laundry Cash",
+      "balance": "$2158.87"
+    },
+    {
+      "date": "January 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "-$41.13"
+    },
+    {
+      "date": "January 23, 2019",
+      "amount": "-$2168.00",
+      "desc": "CC Bill",
+      "balance": "-$2209.13"
+    },
+    {
+      "date": "January 25, 2019",
+      "amount": "$2236.01",
+      "desc": "Paycheck",
+      "balance": "$26.88"
+    },
+    {
+      "date": "February 3, 2019",
+      "amount": "$4600.00",
+      "desc": "SELL OFF STOCK",
+      "balance": "$4626.88"
+    },
+    {
+      "date": "February 4, 2019",
+      "amount": "-$4300.00",
+      "desc": "WR250R",
+      "balance": "$326.88"
+    },
+    {
+      "date": "February 8, 2019 12:00 AM",
+      "amount": "$2283.31",
+      "desc": "Paycheck",
+      "balance": "$2610.19"
+    },
+    {
+      "date": "February 15, 2019",
+      "amount": "-$105.00",
+      "desc": "PGE/Haircut/Laundry Cash",
+      "balance": "$2505.19"
+    },
+    {
+      "date": "February 16, 2019",
+      "amount": "$5400.00",
+      "desc": "SELL OFF AAPL 1/15 LONGS",
+      "balance": "$7905.19"
+    },
+    {
+      "date": "February 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$5705.19"
+    },
+    {
+      "date": "February 22, 2019",
+      "amount": "$2283.32",
+      "desc": "Paycheck",
+      "balance": "$7988.51"
+    },
+    {
+      "date": "February 23, 2019",
+      "amount": "-$4000.00",
+      "desc": "CC Bill Catchup to 0",
+      "balance": "$3988.51"
+    },
+    {
+      "date": "March 8, 2019 12:00 AM",
+      "amount": "$2283.33",
+      "desc": "Paycheck",
+      "balance": "$6271.84"
+    },
+    {
+      "date": "March 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$4071.84"
+    },
+    {
+      "date": "March 22, 2019",
+      "amount": "$2283.33",
+      "desc": "Paycheck",
+      "balance": "$6355.17"
+    },
+    {
+      "date": "March 23, 2019",
+      "amount": "-$4773.00",
+      "desc": "CC Bill + Cash withdrawals",
+      "balance": "$1582.17"
+    },
+    {
+      "date": "April 1, 2019",
+      "amount": "$10000.00",
+      "desc": "SELL OFF STOCK",
+      "balance": "$11582.17"
+    },
+    {
+      "date": "April 5, 2019",
+      "amount": "$2283.33",
+      "desc": "Paycheck",
+      "balance": "$13865.50"
+    },
+    {
+      "date": "April 15, 2019",
+      "amount": "-$8500.00",
+      "desc": "Taxes",
+      "balance": "$5365.50"
+    },
+    {
+      "date": "April 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$3165.50"
+    },
+    {
+      "date": "April 19, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$5400.75"
+    },
+    {
+      "date": "May 3, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7636.00"
+    },
+    {
+      "date": "May 4, 2019",
+      "amount": "-$3498.00",
+      "desc": "CC Bill",
+      "balance": "$4138.00"
+    },
+    {
+      "date": "May 8, 2019 12:00 AM",
+      "amount": "$3000.00",
+      "desc": "SELL OFF AAPL 1/15 LONGS",
+      "balance": "$7138.00"
+    },
+    {
+      "date": "May 17, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$9373.26"
+    },
+    {
+      "date": "May 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$7173.26"
+    },
+    {
+      "date": "May 31, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$9408.51"
+    },
+    {
+      "date": "June 1, 2019",
+      "amount": "-$4273.00",
+      "desc": "CC Bill",
+      "balance": "$5135.51"
+    },
+    {
+      "date": "June 14, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7370.76"
+    },
+    {
+      "date": "June 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$5170.76"
+    },
+    {
+      "date": "June 28, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7406.01"
+    },
+    {
+      "date": "June 29, 2019",
+      "amount": "-$2273.00",
+      "desc": "CC Bill",
+      "balance": "$5133.01"
+    },
+    {
+      "date": "July 12, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7368.26"
+    },
+    {
+      "date": "July 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$5168.26"
+    },
+    {
+      "date": "July 26, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7403.51"
+    },
+    {
+      "date": "July 27, 2019",
+      "amount": "-$2273.00",
+      "desc": "CC Bill",
+      "balance": "$5130.51"
+    },
+    {
+      "date": "August 9, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7365.77"
+    },
+    {
+      "date": "August 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$5165.77"
+    },
+    {
+      "date": "August 23, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$7401.02"
+    },
+    {
+      "date": "August 24, 2019",
+      "amount": "-$4273.00",
+      "desc": "CC Bill",
+      "balance": "$3128.02"
+    },
+    {
+      "date": "September 6, 2019",
+      "amount": "$2235.25",
+      "desc": "Paycheck",
+      "balance": "$5363.27"
+    },
+    {
+      "date": "September 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$3163.27"
+    },
+    {
+      "date": "September 20, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$5510.28"
+    },
+    {
+      "date": "September 23, 2019",
+      "amount": "-$2273.00",
+      "desc": "CC Bill",
+      "balance": "$3237.28"
+    },
+    {
+      "date": "October 4, 2019",
+      "amount": "$8347.01",
+      "desc": "Paycheck (+5% +yr bonus 6k)",
+      "balance": "$11584.30"
+    },
+    {
+      "date": "October 18, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$13931.31"
+    },
+    {
+      "date": "October 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$11731.31"
+    },
+    {
+      "date": "October 23, 2019",
+      "amount": "-$2273.00",
+      "desc": "CC Bill",
+      "balance": "$9458.31"
+    },
+    {
+      "date": "November 1, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$11805.33"
+    },
+    {
+      "date": "November 15, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$14152.34"
+    },
+    {
+      "date": "November 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$11952.34"
+    },
+    {
+      "date": "November 23, 2019",
+      "amount": "-$2273.00",
+      "desc": "CC Bill",
+      "balance": "$9679.34"
+    },
+    {
+      "date": "November 29, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$12026.35"
+    },
+    {
+      "date": "December 13, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$14373.37"
+    },
+    {
+      "date": "December 19, 2019",
+      "amount": "-$2200.00",
+      "desc": "Rent",
+      "balance": "$12173.37"
+    },
+    {
+      "date": "December 23, 2019",
+      "amount": "-$2273.00",
+      "desc": "CC Bill",
+      "balance": "$9900.37"
+    },
+    {
+      "date": "December 27, 2019",
+      "amount": "$2347.01",
+      "desc": "Paycheck (+5%)",
+      "balance": "$12247.38"
+    }
+  ]
 }
