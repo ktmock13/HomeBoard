@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import gql from "graphql-tag";
+import React from "react";
 import ApolloClient from "apollo-client";
-import { ApolloProvider, Subscription } from "react-apollo";
+import { ApolloProvider } from "react-apollo";
 import { WebSocketLink } from "apollo-link-ws";
 import { HttpLink } from "apollo-link-http";
 import { split } from "apollo-link";
 import { getMainDefinition } from "apollo-utilities";
 import { InMemoryCache } from "apollo-cache-inmemory";
+
+import { FinChart } from "./components/FinChart";
 
 const httpLink = new HttpLink({
   uri: "https://homeboard-hasura.herokuapp.com/v1alpha1/graphql"
@@ -38,28 +39,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const DATA_SUBSCRIPTION = gql`
-  subscription onUpdatedData {
-    profile {
-      id
-      name
-    }
-  }
-`;
-class App extends Component {
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <div className="App">
-          <Subscription subscription={DATA_SUBSCRIPTION}>
-            {({ data, loading }) => (
-              <h4>New comment: {JSON.stringify(data)}</h4>
-            )}
-          </Subscription>
-        </div>
-      </ApolloProvider>
-    );
-  }
+export function App() {
+  return (
+    <ApolloProvider client={client}>
+      <FinChart />
+    </ApolloProvider>
+  );
 }
 
 export default App;
