@@ -1,49 +1,50 @@
-import React, { Component } from 'react';
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider, Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import './App.css';
+import React from "react";
+import ApolloClient from "apollo-client";
+import { ApolloProvider } from "react-apollo";
+import { WebSocketLink } from "apollo-link-ws";
+import { HttpLink } from "apollo-link-http";
+import { split } from "apollo-link";
+import { getMainDefinition } from "apollo-utilities";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-})
+import { FinChart } from "./components/FinChart";
 
-class App extends Component {
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <div className="App">
-          <Query
-            query={gql`
-              {finEvents {
-    id
-    desc
-    datetime
-    amount
-  }}
-            `}
-          >
-            {({ loading, error, data }) => {
-              if (loading) return <p>Good things take time....</p>
-              if (error) return <p>Something went wrong...</p>
-              return (
-                <div className="row">
-                  {
-                    data.finEvents.map(finEvent => {
-                      return <p> {JSON.stringify(finEvent)} </p>;
-                    })
-                  }
-                </div>
-              );
+const httpLink = new HttpLink({
+  uri: "https://homeboard-hasura.herokuapp.com/v1alpha1/graphql"
+});
 
-            }
-            }
-          </Query>
-
-        </div>
-      </ApolloProvider>
-    );
+// Create a WebSocket link:
+const wsLink = new WebSocketLink({
+  uri: "ws://homeboard-hasura.herokuapp.com/v1alpha1/graphql",
+  options: {
+    reconnect: true
   }
+});
+
+// using the ability to split links, you can send data to each link
+// depending on what kind of operation is being sent
+const link = split(
+  // split based on operation type
+  ({ query }) => {
+    const { kind, operation } = getMainDefinition(query);
+    return kind === "OperationDefinition" && operation === "subscription";
+  },
+  wsLink,
+  httpLink
+);
+
+// Instantiate client
+const client = new ApolloClient({
+  link,
+  cache: new InMemoryCache()
+});
+
+export function App() {
+  return (
+    <ApolloProvider client={client}>
+      <FinChart />
+    </ApolloProvider>
+  );
 }
 
 export default App;
