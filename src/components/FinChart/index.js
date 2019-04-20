@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
+import "chartjs-plugin-datalabels";
 import gql from "graphql-tag";
 import { Subscription, Mutation } from "react-apollo";
 import csv from "csvtojson";
+import numeral from "numeral";
+import moment from "moment";
+
 import "./styles.scss";
 
 export function FinChart() {
@@ -26,6 +30,7 @@ export function FinChart() {
 
   const [mutatePanel, setMutatePanel] = useState(false);
   const [exportType, setExportType] = useState("CSV");
+
   const onRadioChange = el => setExportType(el.target.value);
   const parseCSV = str =>
     csv()
@@ -72,6 +77,36 @@ export function FinChart() {
     });
   };
 
+  const valuesForLineBar = (lineVal, barVal) => ({ dataset }) => {
+    return dataset && dataset.type === "line"
+      ? lineVal
+      : barVal
+    };
+
+
+
+    const getRevealWidth = (finEvents = []) => {
+      const today = moment();
+      const dates = finEvents.map(e => moment(Number(e.date)));
+      console.log(dates);
+
+      // return moment.duration(today.diff(curr)).asHours() 
+      
+      // moment.duration(today.diff(prev)).asHours() 
+
+
+      let closest = dates.reduce((acc, curr, i) => {
+
+        // if the days between today and the current value are less than the accumulator, then set the accumulator to current
+        const timeBetweenAcc = Math.abs(moment.duration(today.diff(dates[acc])).asDays());
+        const timeBetweenCurr = Math.abs(moment.duration(today.diff(dates[i])).asDays());
+
+        return (timeBetweenAcc < timeBetweenCurr) ? acc : i;
+      }, 0);
+
+      return `${(1 - ((closest+1)/finEvents.length)) * 100}%`;
+    }
+
   return (
     <div>
       <button
@@ -85,36 +120,93 @@ export function FinChart() {
           {({ data, loading }) => {
             let finEvents = loading ? [] : data.bulkStore[0].data;
             return (
-              <Bar
-                data={{
-                  labels: finEvents.map(event => event.date),
-                  datasets: [
-                    {
-                      label: "+ Amounts",
-                      backgroundColor: context =>
-                        context.dataset.data[context.dataIndex] < 0
-                          ? "red"
-                          : "lightGreen",
-                      data: finEvents.map(event =>
-                        Number(event.amount.replace("$", ""))
-                      )
+              <div>
+                {loading && <div className="loader">Loading... </div>}
+                <div className='reveal' style={{
+                  width: getRevealWidth(finEvents)
+                }} />
+                <Bar
+                  data={{
+                    labels: finEvents.map(event => event.date),
+                    datasets: [
+                      {
+                        backgroundColor: context =>
+                          context.dataset.data[context.dataIndex] < 0
+                            ? "red"
+                            : "#7ED321",
+                        data: finEvents.map(event =>
+                          Number(event.amount.replace("$", ""))
+                        )
+                      },
+                      {
+                        borderColor: "#4A90E2",
+                        borderWidth: 2,
+                        type: "line",
+                        borderJoinStyle: "round",
+                        borderCapStyle: "round",
+                        lineTension: 0.1,
+                        pointRadius: 0,
+                        fill: false,
+                        data: finEvents.map(event =>
+                          Number(event.balance.replace("$", ""))
+                        )
+                      }
+                    ]
+                  }}
+                  options={{
+                    layout: {
+                      padding: {
+                        top: 100,
+                        bottom: 100
+                      }
                     },
-                    {
-                      label: "Balance",
-                      backgroundColor: "lightBlue",
-                      borderColor: "lightBlue",
-                      type: "line",
-                      borderJoinStyle: "round",
-                      borderCapStyle: "round",
-                      lineTension: 0,
-                      fill: false,
-                      data: finEvents.map(event =>
-                        Number(event.balance.replace("$", ""))
-                      )
+                    plugins: {
+                      // Change options for ALL labels of THIS CHART
+                      datalabels: {
+                        color: "black",
+                        align: valuesForLineBar("top", "middle"),
+                        font: {
+                          size: 6
+                        },
+                        color: valuesForLineBar('silver', 'black'),
+                        display: valuesForLineBar(false, true),
+                        clamp: true,
+                        rotation: valuesForLineBar(-90, -90),
+                        formatter: (value, context) =>
+                          numeral(value).format("0.0 a")
+                      }
+                    },
+                    tooltips: {
+                      enabled: false
+                    },
+                    legend: {
+                      display: false
+                    },
+                    scales: {
+                      yAxes: [
+                        {
+                          display: false
+                        }
+                      ],
+                      xAxes: [
+                        {
+                          barThickness: 8,
+                          ticks: {
+                            callback: function(value, index, values) {
+                              return `${finEvents[index].desc} - ${moment(Number(value)).format("MMM Do")}`;
+                            },
+                            maxRotation: 90,
+                            minRotation: 90,
+                            autoSkip: false,
+                            fontColor: 'silver',
+                            fontSize: 8
+                          }
+                        }
+                      ]
                     }
-                  ]
-                }}
-              />
+                  }}
+                />
+              </div>
             );
           }}
         </Subscription>

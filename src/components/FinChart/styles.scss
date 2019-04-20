@@ -7,10 +7,33 @@
   position: absolute;
   height: 90%;
   width: 50%;
+  margin: 20px;
   z-index: -1;
 }
 .mutate-form-btns {
   position: absolute;
   left: 0;
   top: 95%;
+  margin: 20px;
+  .mutate-submit,
+  label {
+    margin: 0 10px;
+  }
+}
+.loader {
+  color: white;
+  position: absolute;
+}
+
+canvas {
+  background: black;
+}
+.reveal{
+  position: absolute;
+  height:100%;
+  width: 75%;
+  background: black;
+  right: 0;
+  opacity: .7;
+  border-left: 1px solid #333;
 }
