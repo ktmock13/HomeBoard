@@ -10,7 +10,8 @@
 
 # production
 /build
-
+/utils/input.csv
+/utils/output.json
 # misc
 .DS_Store
 .env.local
