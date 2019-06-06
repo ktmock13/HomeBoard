@@ -2,6 +2,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 1;
 }
 .mutate-textarea {
   position: absolute;
@@ -34,6 +35,6 @@ canvas {
   width: 75%;
   background: black;
   right: 0;
-  opacity: .7;
+  opacity: .4;
   border-left: 1px solid #333;
 }

@@ -163,7 +163,6 @@ export function FinChart() {
                     plugins: {
                       // Change options for ALL labels of THIS CHART
                       datalabels: {
-                        color: "black",
                         align: valuesForLineBar("top", "middle"),
                         font: {
                           size: 6
