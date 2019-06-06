@@ -108,7 +108,7 @@ export function FinChart() {
     }
 
   return (
-    <div>
+    <div class="root">
       <button
         className="mutate-panel-btn"
         onClick={() => setMutatePanel(!mutatePanel)}
@@ -120,7 +120,7 @@ export function FinChart() {
           {({ data, loading }) => {
             let finEvents = loading ? [] : data.bulkStore[0].data;
             return (
-              <div>
+              <div class="chart-display">
                 {loading && <div className="loader">Loading... </div>}
                 <div className='reveal' style={{
                   width: getRevealWidth(finEvents)
@@ -165,7 +165,8 @@ export function FinChart() {
                       datalabels: {
                         align: valuesForLineBar("top", "middle"),
                         font: {
-                          size: 6
+                          size: 7,
+                          weight: 700
                         },
                         color: valuesForLineBar('silver', 'black'),
                         display: valuesForLineBar(false, true),
@@ -197,8 +198,8 @@ export function FinChart() {
                             maxRotation: 90,
                             minRotation: 90,
                             autoSkip: false,
-                            fontColor: 'silver',
-                            fontSize: 8
+                            fontColor: '#444',
+                            fontSize: 10
                           }
                         }
                       ]

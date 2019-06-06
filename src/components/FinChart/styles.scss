@@ -1,8 +1,21 @@
+body {
+  background: black;
+  height: 100%;
+  color: white
+}
+.chart-display{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
 .mutate-panel-btn {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
+  background: #111;
+  color: white;
+  border-radius: 3px;
 }
 .mutate-textarea {
   position: absolute;
@@ -10,6 +23,7 @@
   width: 50%;
   margin: 20px;
   z-index: -1;
+  background: #111;
 }
 .mutate-form-btns {
   position: absolute;
