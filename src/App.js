@@ -15,7 +15,7 @@ const httpLink = new HttpLink({
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "ws://homeboard-hasura.herokuapp.com/v1alpha1/graphql",
+  uri: "wss://homeboard-hasura.herokuapp.com/v1alpha1/graphql",
   options: {
     reconnect: true
   }

@@ -227,7 +227,7 @@ export function FinChart() {
                   id="texbox"
                   name="textbox"
                   onChange={autoDetectJSON}
-                  placeholder="Paste CSV or array of JSON objects with date, amount, description..."
+                  placeholder="Paste CSV or array of JSON objects with (date, amount, desc, balance) columns"
                 />
                 <div className="mutate-form-btns">
                   <label>
