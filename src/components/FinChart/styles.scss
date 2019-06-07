@@ -9,6 +9,7 @@ body {
   align-items: center;
 }
 .mutate-panel-btn {
+  opacity: .5;
   position: absolute;
   top: 0;
   right: 0;
@@ -24,6 +25,7 @@ body {
   margin: 20px;
   z-index: -1;
   background: #111;
+  color:whitesmoke
 }
 .mutate-form-btns {
   position: absolute;
