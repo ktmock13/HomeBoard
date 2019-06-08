@@ -165,13 +165,13 @@ export function FinChart() {
                       datalabels: {
                         align: valuesForLineBar("top", "middle"),
                         font: {
-                          size: 7,
-                          weight: 700
+                          size: 9,
+                          weight: 500
                         },
                         color: valuesForLineBar('silver', 'black'),
-                        display: valuesForLineBar(false, true),
+                        display: valuesForLineBar(false, false),
                         clamp: true,
-                        rotation: valuesForLineBar(-90, -90),
+                        rotation: valuesForLineBar(0, -90),
                         formatter: (value, context) =>
                           numeral(value).format("0.0 a")
                       }
@@ -193,7 +193,7 @@ export function FinChart() {
                           barThickness: 8,
                           ticks: {
                             callback: function(value, index, values) {
-                              return `${finEvents[index].desc} - ${moment(Number(value)).format("MMM Do")}`;
+                              return `${finEvents[index].desc} - ${moment(Number(value)).format("ddd M/D")}`;
                             },
                             maxRotation: 90,
                             minRotation: 90,
